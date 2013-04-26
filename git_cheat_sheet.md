@@ -1,4 +1,4 @@
-# GIT Cheat Sheet
+# Git Cheat Sheet
 
 * Legend: `<>` required, `[]` optional
 
