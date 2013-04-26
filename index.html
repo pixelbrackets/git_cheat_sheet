@@ -1,0 +1,626 @@
+<!DOCTYPE HTML>
+	<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>Git Cheat Sheet</title>
+		<link href="screen.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div id="wrapper"><h1>GIT Cheat Sheet</h1>
+
+<ul>
+<li>Legend: <code>&lt;&gt;</code> required, <code>[]</code> optional</li>
+</ul><h2>Create &amp; Clone</h2>
+
+<ul>
+<li>
+<p>Clone an existing repository</p>
+
+<pre><code>git clone ~/git/some_local_repo.git
+git clone git@example.com:repo.git
+</code></pre>
+
+<p><em>default protocoll is ssh</em></p>
+</li>
+<li>
+<p>Create a new local repository</p>
+
+<pre><code>mkdir repo &amp;&amp; cd repo
+git init
+</code></pre>
+</li>
+<li>
+<p>Import existing local repository to remote</p>
+
+<pre><code>git remote add origin ssh://git@example.com/repo.git
+git push -u origin master
+</code></pre>
+
+<p><em><code>-u</code> ≙ push for first time and set upstream</em></p>
+</li>
+<li>
+<p>Create remote repository for existing local data</p>
+
+<pre><code>mkdir repo.git &amp;&amp; cd repo.git
+git init --bare
+</code></pre>
+
+<p><em>The remote repository has to be »bare« (does not contain a working filetree, but a special .git subdirectory only) in order to accept a push</em></p>
+</li>
+</ul><h2>Show local changes</h2>
+
+<ul>
+<li>
+<p>Current Status - Present branch name and changed files in working directory</p>
+
+<pre><code>git status
+git st
+</code></pre>
+
+<p><em>requires an alias set for »st«</em></p>
+</li>
+<li>
+<p>Changes to tracked files not yet staged</p>
+
+<pre><code>git diff
+</code></pre>
+</li>
+<li>
+<p>Difference between staged files and HEAD</p>
+
+<pre><code>git diff --cached
+</code></pre>
+</li>
+<li>
+<p>Difference between all files and HEAD since last commit</p>
+
+<pre><code>git diff HEAD
+</code></pre>
+</li>
+<li>
+<p>Show only filenames, e.g. to show all file differences between two branches</p>
+
+<pre><code>git diff master --name-only
+git diff master --name-status
+</code></pre>
+</li>
+<li>
+<p>Difference between branches, two commits, etc</p>
+
+<pre><code>git diff &lt;foo&gt; &lt;bar&gt;
+</code></pre>
+
+<p><em><code>+</code> line does exist in »foo« but not in »bar«, <code>-</code> reverse</em></p>
+</li>
+</ul><h2>Show history</h2>
+
+<ul>
+<li>
+<p>Show all commits, starting with newest</p>
+
+<pre><code>git log
+</code></pre>
+</li>
+<li>
+<p>Show history of changes with files changed</p>
+
+<pre><code>git whatchanged
+</code></pre>
+</li>
+<li>
+<p>Show changes over time for a specific file</p>
+
+<pre><code>git log -p &lt;file&gt;
+</code></pre>
+</li>
+<li>
+<p>Who changed what and when in a file</p>
+
+<pre><code>git blame &lt;file&gt;
+</code></pre>
+</li>
+<li>
+<p>Show a commit identified by its ID</p>
+
+<pre><code>git show &lt;ID&gt;
+</code></pre>
+</li>
+<li>
+<p>Show all commits with a certain word in commit message</p>
+
+<pre><code>git log git log --grep=&lt;searchword&gt;
+</code></pre>
+</li>
+</ul><h2>Commit</h2>
+
+<ul>
+<li>
+<p>Add all (even untracked) changed files to next commit (≙ stage)</p>
+
+<pre><code>git add -A
+</code></pre>
+</li>
+<li>
+<p>Stage a tracked and modified file</p>
+
+<pre><code>git add &lt;file&gt;
+</code></pre>
+</li>
+<li>
+<p>Add some changes in a file to the next commit (partial commit)</p>
+
+<pre><code>git add -p &lt;file&gt;
+</code></pre>
+
+<p><code>y</code> <em>Add this part to the next commit</em><br><code>n</code> <em>Skip this part</em><br><code>d</code> <em>Don’t add this and all remaining parts</em><br><code>s</code> <em>Split the parts info smaller ones (only works if there’s unchanged lines between the changes in the displayed part)</em><br><code>e</code> <em>Manually edit the parts</em></p>
+</li>
+<li>
+<p>Commit all local changes in tracked files</p>
+
+<pre><code>git commit -a
+</code></pre>
+</li>
+<li>
+<p>Commit previously staged changes</p>
+
+<pre><code>git commit
+git commit -m "&lt;message&gt;"
+</code></pre>
+</li>
+<li>
+<p>Change the last commit</p>
+
+<pre><code>git commit --amend -a
+</code></pre>
+</li>
+</ul><h2>Branches</h2>
+
+<ul>
+<li>
+<p>List local branches</p>
+
+<pre><code>git branch
+</code></pre>
+
+<p><em><code>*</code> marks the current branch</em></p>
+</li>
+<li>
+<p>List remote-tracking branches</p>
+
+<pre><code>git branch -r
+</code></pre>
+
+<p><em>use <code>-a</code> to show local and remote-tracking branches at once</em></p>
+</li>
+<li>
+<p>Switch to a different branch</p>
+
+<pre><code>git checkout &lt;branch&gt;
+git checkout -t &lt;remote&gt;/&lt;remote-branch&gt;
+</code></pre>
+
+<p><em><code>-t</code> checkout a new branch based on remote branch and track it</em></p>
+</li>
+<li>
+<p>Create a new branch based on your current HEAD</p>
+
+<pre><code>git branch &lt;new-branch&gt;
+</code></pre>
+
+<p><em>use <code>git checkout -b &lt;branch&gt;</code> to create a branch and switch right into it</em></p>
+</li>
+<li>
+<p>Create a new branch based on a remote branch and track it</p>
+
+<pre><code>git branch --track &lt;new-branch&gt; &lt;remote&gt;/&lt;remote-branch&gt;
+</code></pre>
+
+<p><em>use <code>--no-track</code> to create a new branch based on a remote branch but don't track it</em></p>
+</li>
+<li>
+<p>Set remote-tracking branch for current local branch</p>
+
+<pre><code>git branch --set-upstream &lt;local-branch&gt; &lt;remote&gt;/&lt;remote-branch&gt;
+</code></pre>
+</li>
+<li>
+<p>Delete a local branch</p>
+
+<pre><code>git branch -d &lt;branch&gt;
+</code></pre>
+</li>
+<li>
+<p>Delete a remote branch</p>
+
+<pre><code>git push &lt;remote&gt; :&lt;remote-branch&gt;
+</code></pre>
+</li>
+</ul><h2>Tags</h2>
+
+<ul>
+<li>
+<p>Show all tags</p>
+
+<pre><code>git tag -n
+</code></pre>
+
+<p><em><code>-l</code> will show tag names only, <code>-n&lt;num&gt;</code> will add a number of lines from the annotation (default is one)</em></p>
+</li>
+<li>
+<p>Mark the current commit with a tag</p>
+
+<pre><code>git tag -m "&lt;annotation&gt;" &lt;tag-name&gt;
+</code></pre>
+</li>
+</ul><h2>Update</h2>
+
+<ul>
+<li>
+<p>Download all changes from , but don‘t merge them into HEAD</p>
+
+<pre><code>git fetch &lt;remote&gt;
+</code></pre>
+
+<p><em>a manual merge is required now</em></p>
+</li>
+<li>
+<p>Download changes and directly merge/ integrate into HEAD</p>
+
+<pre><code>git pull [&lt;remote&gt; &lt;branch&gt;]
+</code></pre>
+
+<p><em>if the remote branch is tracked then <code>git pull</code> is sufficient</em></p>
+</li>
+<li>
+<p>List all currently configured remote repositories</p>
+
+<pre><code>git remote -v
+</code></pre>
+</li>
+<li>
+<p>Show information about a remote, e.g. which branches exist in this remote</p>
+
+<pre><code>git remote show &lt;remote&gt;
+</code></pre>
+</li>
+<li>
+<p>Deletes all stale remote-tracking branches in a remote</p>
+
+<pre><code>git remote prune &lt;remote&gt;
+</code></pre>
+</li>
+<li>
+<p>Add a new remote repository</p>
+
+<pre><code>git remote add &lt;remote&gt; &lt;url&gt;
+</code></pre>
+</li>
+</ul><h2>Publish</h2>
+
+<ul>
+<li>
+<p>Publish local changes in a branch to a remote repository</p>
+
+<pre><code>git push [&lt;remote&gt; &lt;branch&gt;]
+git push --set-upstream &lt;remote&gt; &lt;branch&gt;
+</code></pre>
+
+<p><em>push branch to remote and track it, <code>-u</code> is the short option</em></p>
+</li>
+<li>
+<p>Publish all local branches to a remote</p>
+
+<pre><code>git push --all &lt;remote&gt;
+</code></pre>
+</li>
+<li>
+<p>Publish a tag to a remote</p>
+
+<pre><code>git push &lt;remote&gt; &lt;tag&gt;
+</code></pre>
+</li>
+<li>
+<p>Publish your all tags</p>
+
+<pre><code>git push --tags &lt;remote&gt;
+</code></pre>
+</li>
+</ul><h2>Merge</h2>
+
+<ul>
+<li>
+<p>View merge conflicts</p>
+
+<pre><code>git merge &lt;branch&gt;
+</code></pre>
+</li>
+<li>
+<p>Merge a branch into your current HEAD</p>
+
+<pre><code>git merge &lt;branch&gt;
+</code></pre>
+</li>
+<li>
+<p>Use a merge tool to solve conflicts</p>
+
+<pre><code>git mergetool -t meld
+git mergetool
+</code></pre>
+
+<p><em>if empty this will use the configuration variable »merge.tool«</em></p>
+</li>
+<li>
+<p>Use a recursive merge strategy</p>
+
+<pre><code>git merge -s recursive -X &lt;ours|theirs|patience&gt;
+</code></pre>
+
+<p><em>»recursive« is the default merge strategy when pulling or merging one branch, so it may be dropped</em><br><em>»ours« will prefer current branch head over conflicting changes from the other tree but merge non-conflicts normally</em><br><em>»patience« will cause GIT to spend some extra time while merging to avoid merge mistakes</em></p>
+</li>
+<li>
+<p>Force merge to use current branch head and ignore all changes from other branches</p>
+
+<pre><code>git merge -s ours
+</code></pre>
+</li>
+<li>
+<p>Cancel merge</p>
+
+<pre><code>git merge --abort
+</code></pre>
+</li>
+<li>
+<p>Manually solve conflicts and mark file as resolved</p>
+
+<pre><code>git add &lt;resolved-file&gt;
+git commit -m 'Manual Merge'
+</code></pre>
+</li>
+</ul><h2>Rebase</h2>
+
+<ul>
+<li>
+<p>Rebase your current HEAD onto </p>
+
+<pre><code>git rebase &lt;branch&gt;
+</code></pre>
+
+<p><em>!! Don‘t rebase published commits!</em></p>
+</li>
+<li>
+<p>Abort a rebase</p>
+
+<pre><code>git rebase --abort
+</code></pre>
+</li>
+<li>
+<p>Continue a rebase after resolving conflicts</p>
+
+<pre><code>git rebase --continue
+</code></pre>
+</li>
+</ul><h2>Stash</h2>
+
+<ul>
+<li>
+<p>Stash all changes away</p>
+
+<pre><code>git stash save [&lt;annotation&gt;]
+</code></pre>
+</li>
+<li>
+<p>Show all available stashes</p>
+
+<pre><code>git stash list
+</code></pre>
+
+<p><em>»stash@{0}« is the keyname of the stash, where 0 is the latest</em></p>
+</li>
+<li>
+<p>Apply state from the stash list to the current working tree</p>
+
+<pre><code>git stash apply [&lt;stash-name&gt;]
+</code></pre>
+
+<p><em>default is »stash@{0}«, use <code>git stash pop</code> to apply changes and remove the state from stash list</em></p>
+</li>
+<li>
+<p>Remove a state from the stash list</p>
+
+<pre><code>git stash drop [&lt;stash-name&gt;]
+</code></pre>
+</li>
+<li>
+<p>Remove all the stashed states</p>
+
+<pre><code>git stash clear
+</code></pre>
+</li>
+</ul><h2>Revert</h2>
+
+<ul>
+<li>
+<p>Remove files from stage (unadd)</p>
+
+<pre><code>git reset HEAD
+git reset HEAD -- &lt;single-file&gt;
+</code></pre>
+</li>
+<li>
+<p>Discard all local changes in your working directory</p>
+
+<pre><code>git reset --hard HEAD
+</code></pre>
+</li>
+<li>
+<p>Discard local changes in a specific file</p>
+
+<pre><code>git checkout &lt;file&gt;
+</code></pre>
+</li>
+<li>
+<p>Revert a commit</p>
+
+<pre><code>git revert HEAD
+git revert &lt;commit&gt;
+</code></pre>
+
+<p><em>produces a commit (alters the history) with contrary changes to last commit</em></p>
+</li>
+<li>
+<p>Remove a file from index but keep it on file system</p>
+
+<pre><code>git rm --cached
+</code></pre>
+</li>
+</ul><h2>Configuration</h2>
+
+<ul>
+<li>
+<p>Get configuration option</p>
+
+<pre><code>git config &lt;section&gt;.&lt;key&gt;
+</code></pre>
+</li>
+<li>
+<p>Set configuration option</p>
+
+<pre><code>git config --local &lt;section&gt;.&lt;key&gt; &lt;value&gt;
+</code></pre>
+
+<p><em>»local« will write to ».git/config« in current repository, »global« to »~/.gitconfig» and »system« to your systems »/etc/gitconfig«</em></p>
+</li>
+<li>
+<p>Set username and e-mail</p>
+
+<pre><code>git config --local user.name "&lt;username&gt;" &amp;&amp; git config --local user.email &lt;e-mail&gt;
+</code></pre>
+</li>
+<li>
+<p>Ignore mode changes (chmod)</p>
+
+<pre><code>git config --local core.filemode false
+</code></pre>
+</li>
+<li>
+<p>Set alias »st« for »status«</p>
+
+<pre><code>git config --global alias.st status
+</code></pre>
+</li>
+</ul><h2>Commit Message Format</h2>
+
+<pre><code>[BUGFIX] Short summary
+
+Optional explanatory text. Separated by new line. Wrapped to 74 chars. Written in imperative present tense ("Fix bug", not "Fixed bug").
+
+Help others to understand what you did (Motivation for the change? Difference to previous version?), but keep it simple.
+
+Mandatory title prefix: [BUGFIX], [FEATURE] (also small additions) or [TASK] (none of the above, e.g. code cleanup). Additionall flags: [!!] (breaking change), [DB] (alter database definition), [CONF] (configuration change), [SECURITY] (fix a security issue).
+
+Bug tracker refs added at bottom (see http://is.gd/commit_refs).
+
+Resolve #42
+Ref #4 #8 #15 #16
+</code></pre>
+
+<p><em>shortened, detailed example at <a href="http://is.gd/commit_format">http://is.gd/commit_format</a></em></p>
+
+<h2>Best practices</h2>
+
+<ul>
+<li>Commit related changes
+
+<ul>
+<li>Each commit should adress one logical unit. Two different bugs should result into two commits.</li>
+</ul>
+</li>
+<li>Commit early &amp; often
+
+<ul>
+<li>Keep your commits small and comprehensible, split large features into logical chunks.</li>
+</ul>
+</li>
+<li>Test code before committing
+
+<ul>
+<li>Make shure the code works, don't guess. Revert the commit if necessary.</li>
+</ul>
+</li>
+<li>Don't commit half-done work
+
+<ul>
+<li>Commit only complete, logical changes, not half-done chunks. »Stash« changes if applicable.</li>
+</ul>
+</li>
+<li>Don't commit hot files
+
+<ul>
+<li>Don't commit configuration files (commit a config template instead), personal data, temporary files (GIT is no backup system) or things that can be regenerated form other commited things.</li>
+</ul>
+</li>
+<li>Write good commit messages
+
+<ul>
+<li>Help others to understand what you did (Motivation for the change? Whats the difference to the previous version?)</li>
+<li>Useless commit messages may be forwarded to whatthecommit.com</li>
+</ul>
+</li>
+<li>Write in imperative present tense («change», not «changed» or «changes»)
+
+<ul>
+<li>A commit is a set of instructions for how to go from a previous state to a new state, so you should describe was the commit does and not what it did to your repository.</li>
+</ul>
+</li>
+<li>Don't panic
+
+<ul>
+<li>GIT lets you undo, fix or remove a bunch of actions</li>
+</ul>
+</li>
+<li>Don't change published history
+
+<ul>
+<li>GIT allows you to rewrite public history, but it is problematic for everyone and thus it is just not best practice to do so.</li>
+</ul>
+</li>
+<li>Use branches
+
+<ul>
+<li>Branching is cheap. Use separate branches for bugfixes, features &amp; ideas. Make branching a part of ypur local workflow.</li>
+</ul>
+</li>
+<li>Merge regularly
+
+<ul>
+<li>Don't merge a huge feature into the master, instead merge the master regularly with your branch.</li>
+</ul>
+</li>
+<li>Use conventions
+
+<ul>
+<li>As with every development process: use conventions. For naming of branches and tags, how to write commit messages, when to commit into what branch, etc.</li>
+</ul>
+</li>
+</ul><h2>Sources</h2>
+
+<ul>
+<li><a href="https://github.com/yguo89/RTOS/wiki/Git-Cheat-Sheet">Git Cheat Sheet by Ying Guo</a></li>
+<li><a href="http://www.git-tower.com/files/cheatsheet/Git_Cheat_Sheet_grey.pdf">Git Cheat Sheet by Git Tower</a></li>
+<li><a href="http://gitready.com/">http://gitready.com/</a></li>
+<li><a href="http://git-scm.com/documentation">http://git-scm.com/documentation</a></li>
+<li><a href="http://wiki.typo3.org/CommitMessage_Format_(Git)">http://wiki.typo3.org/CommitMessage_Format_(Git)</a></li>
+</ul><h2>About</h2>
+
+<ul>
+<li>Supervisor: Dan Untenzu <a href="https://twitter.com/pixelbrackets">@pixelbrackets</a>
+</li>
+<li>License: <a href="https://creativecommons.org/licenses/by-sa/3.0/de/">CC-BY-SA 3.0</a>
+</li>
+<li>Disclaimer: <a href="http://i.minus.com/ibxEw6l6IvBlwd.jpg">I Have No Idea What I'm Doing</a>
+</li>
+<li>Flattr: <a href="https://flattr.com/profile/pixelbrackets">https://flattr.com/profile/pixelbrackets</a>
+</li>
+</ul></div>
+	</body>
+	</html>
