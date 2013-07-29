@@ -43,6 +43,10 @@
 
 		git diff
 
+* Show a summary of changes. A bit more than `git st`
+
+		git diff --stat
+
 * Difference between staged files and HEAD
 
 		git diff --cached
@@ -60,7 +64,7 @@
 
 		git diff <foo> <bar>
 
-	_`+` line does exist in »foo« but not in »bar«, `-` reverse_
+	_`+` line does exist in »bar« but not in »foo«, `-` reverse_
 
 ## Show history
 
@@ -86,7 +90,7 @@
 
 * Show all commits with a certain word in commit message
 
-		git log git log --grep=<searchword>
+		git log --grep=<searchword>
 
 ## Commit
 
