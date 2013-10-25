@@ -40,10 +40,6 @@
 
 		git diff
 
-* Show a summary of changes. A bit more than `git st`
-
-		git diff --stat
-
 * Difference between staged files and HEAD
 
 		git diff --cached
