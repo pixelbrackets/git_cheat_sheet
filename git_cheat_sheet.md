@@ -286,7 +286,8 @@
 * Rebase your current HEAD onto <branch>
 
 		git rebase <branch>
-	_!! Don‘t rebase published commits!_
+
+	_!! Don‘t rebase published commits_
 
 * Abort a rebase
 
