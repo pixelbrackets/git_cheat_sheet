@@ -242,13 +242,12 @@
 
 ## Merge
 
-* View merge conflicts
-
-		git merge <branch>
-
 * Merge a branch into your current HEAD
 
 		git merge <branch>
+
+* Manually solve conflicts and mark file as resolved
+
 
 * Use a merge tool to solve conflicts
 
