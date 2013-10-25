@@ -388,7 +388,7 @@
 	Resolve #42
 	Ref #4 #8 #15 #16
 
-_shortened, detailed example at http://is.gd/commit_format_
+_shortened, detailed example at http://is.gd/commitformat_
 
 ## Best practices
 
