@@ -330,15 +330,15 @@
 		git reset HEAD
 		git reset HEAD -- <single-file>
 
-* Discard all local changes in your working directory
-
-		git reset --hard HEAD
-
 * Discard local changes in a specific file
 
 		git checkout <file>
 
-* Revert a commit
+* Discard all local changes in your working directory
+
+		git reset --hard HEAD
+
+* Revert a commit (e.g. to revert a commit already pushed to remote)
 
 		git revert HEAD
 		git revert <commit>
