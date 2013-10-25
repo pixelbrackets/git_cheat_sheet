@@ -273,10 +273,13 @@
 
 		git merge --abort
 
-* Manually solve conflicts and mark file as resolved
+* Undo a local merge
 
-		git add <resolved-file>
-		git commit -m 'Manual Merge'
+		git reset --hard <ID>
+		git reset --hard <remote>/<branch>
+
+	_resetting to remote branch will only work if the remote branch isn't ahead of your local one
+	_to undo a merge that was already pushed you'll have to do a revert
 
 ## Rebase
 
