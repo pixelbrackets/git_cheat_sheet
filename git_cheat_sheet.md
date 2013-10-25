@@ -159,7 +159,7 @@
 
 * Set remote-tracking branch for current local branch
 
-		git branch --set-upstream <local-branch> <remote>/<remote-branch>
+		git branch --track <local-branch> <remote>/<remote-branch>
 
 * Delete a local branch
 
