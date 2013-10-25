@@ -77,9 +77,11 @@
 
 		git log -p <file>
 
-* Who changed what and when in a file
+* Show who changed what and when in a file
 
 		git blame <file>
+
+	_left side shows the last commit ID for the content on the right side
 
 * Show a commit identified by its ID
 
