@@ -248,6 +248,7 @@
 
 * Manually solve conflicts and mark file as resolved
 
+		git add <resolved-file> && git commit -m 'Manual Merge'
 
 * Use a merge tool to solve conflicts
 
