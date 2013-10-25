@@ -2,11 +2,11 @@
 	<html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
-		<title>Git Cheat Sheet</title>
-		<link href="screen.css" rel="stylesheet" type="text/css">
+		<title></title>
+		<link href="file:///tmp/git/screen.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div id="wrapper"><h1>GIT Cheat Sheet</h1>
+		<div id="wrapper"><h1>Git Cheat Sheet</h1>
 
 <ul>
 <li>Legend: <code>&lt;&gt;</code> required, <code>[]</code> optional</li>
@@ -16,8 +16,7 @@
 <li>
 <p>Clone an existing repository</p>
 
-<pre><code>git clone ~/git/some_local_repo.git
-git clone git@example.com:repo.git
+<pre><code>git clone ~/git/some_local_repo.git &amp;&amp; git clone git@example.com:repo.git
 </code></pre>
 
 <p><em>default protocoll is ssh</em></p>
@@ -25,15 +24,13 @@ git clone git@example.com:repo.git
 <li>
 <p>Create a new local repository</p>
 
-<pre><code>mkdir repo &amp;&amp; cd repo
-git init
+<pre><code>mkdir repo &amp;&amp; cd repo &amp;&amp; git init
 </code></pre>
 </li>
 <li>
 <p>Import existing local repository to remote</p>
 
-<pre><code>git remote add origin ssh://git@example.com/repo.git
-git push -u origin master
+<pre><code>git remote add origin ssh://git@example.com/repo.git &amp;&amp; git push -u &lt;remote&gt; &lt;branch&gt;
 </code></pre>
 
 <p><em><code>-u</code> ≙ push for first time and set upstream</em></p>
@@ -41,8 +38,7 @@ git push -u origin master
 <li>
 <p>Create remote repository for existing local data</p>
 
-<pre><code>mkdir repo.git &amp;&amp; cd repo.git
-git init --bare
+<pre><code>mkdir repo.git &amp;&amp; cd repo.git &amp;&amp; git init --bare
 </code></pre>
 
 <p><em>The remote repository has to be »bare« (does not contain a working filetree, but a special .git subdirectory only) in order to accept a push</em></p>
@@ -51,16 +47,16 @@ git init --bare
 
 <ul>
 <li>
-<p>Current Status - Present branch name and changed files in working directory</p>
+<p>Show status - current branch name and changed files in working directory</p>
 
 <pre><code>git status
 git st
 </code></pre>
 
-<p><em>requires an alias set for »st«</em></p>
+<p><em><code>git st</code> requires an alias set for »st«</em></p>
 </li>
 <li>
-<p>Changes to tracked files not yet staged</p>
+<p>Show all changes not yet staged (in tracked files only)</p>
 
 <pre><code>git diff
 </code></pre>
@@ -78,7 +74,7 @@ git st
 </code></pre>
 </li>
 <li>
-<p>Show only filenames, e.g. to show all file differences between two branches</p>
+<p>Show only names of changed files, e.g. to show all file differences between two branches</p>
 
 <pre><code>git diff master --name-only
 git diff master --name-status
@@ -90,7 +86,7 @@ git diff master --name-status
 <pre><code>git diff &lt;foo&gt; &lt;bar&gt;
 </code></pre>
 
-<p><em><code>+</code> line does exist in »foo« but not in »bar«, <code>-</code> reverse</em></p>
+<p><em>»+« line does exist in »bar« but not in »foo«, »-« reverse</em></p>
 </li>
 </ul><h2>Show history</h2>
 
@@ -114,10 +110,12 @@ git diff master --name-status
 </code></pre>
 </li>
 <li>
-<p>Who changed what and when in a file</p>
+<p>Show who changed what and when in a file</p>
 
 <pre><code>git blame &lt;file&gt;
 </code></pre>
+
+<p><em>left side shows the last commit ID for the content on the right side</em></p>
 </li>
 <li>
 <p>Show a commit identified by its ID</p>
@@ -128,7 +126,7 @@ git diff master --name-status
 <li>
 <p>Show all commits with a certain word in commit message</p>
 
-<pre><code>git log git log --grep=&lt;searchword&gt;
+<pre><code>git log --grep=&lt;searchword&gt;
 </code></pre>
 </li>
 </ul><h2>Commit</h2>
@@ -147,18 +145,18 @@ git diff master --name-status
 </code></pre>
 </li>
 <li>
-<p>Add some changes in a file to the next commit (partial commit)</p>
+<p>Commit all local changes in tracked files</p>
+
+<pre><code>git commit -a
+</code></pre>
+</li>
+<li>
+<p>Add hand-picked changes in a file to the next commit (partial commit)</p>
 
 <pre><code>git add -p &lt;file&gt;
 </code></pre>
 
 <p><code>y</code> <em>Add this part to the next commit</em><br><code>n</code> <em>Skip this part</em><br><code>d</code> <em>Don’t add this and all remaining parts</em><br><code>s</code> <em>Split the parts info smaller ones (only works if there’s unchanged lines between the changes in the displayed part)</em><br><code>e</code> <em>Manually edit the parts</em></p>
-</li>
-<li>
-<p>Commit all local changes in tracked files</p>
-
-<pre><code>git commit -a
-</code></pre>
 </li>
 <li>
 <p>Commit previously staged changes</p>
@@ -220,14 +218,24 @@ git checkout -t &lt;remote&gt;/&lt;remote-branch&gt;
 <li>
 <p>Set remote-tracking branch for current local branch</p>
 
-<pre><code>git branch --set-upstream &lt;local-branch&gt; &lt;remote&gt;/&lt;remote-branch&gt;
+<pre><code>git branch --track &lt;local-branch&gt; &lt;remote&gt;/&lt;remote-branch&gt;
 </code></pre>
+</li>
+<li>
+<p>Show merged branches</p>
+
+<pre><code>git branch -a --merged
+</code></pre>
+
+<p><em><code>--no-merged</code> will show branches not merged yet</em></p>
 </li>
 <li>
 <p>Delete a local branch</p>
 
 <pre><code>git branch -d &lt;branch&gt;
 </code></pre>
+
+<p><em><code>-d</code> will only delete the branch if it is merged with its upstream branch (if set), <code>-D</code> will force the deletion</em></p>
 </li>
 <li>
 <p>Delete a remote branch</p>
@@ -329,15 +337,15 @@ git push --set-upstream &lt;remote&gt; &lt;branch&gt;
 
 <ul>
 <li>
-<p>View merge conflicts</p>
+<p>Merge a branch into your current HEAD</p>
 
 <pre><code>git merge &lt;branch&gt;
 </code></pre>
 </li>
 <li>
-<p>Merge a branch into your current HEAD</p>
+<p>Manually solve conflicts and mark file as resolved</p>
 
-<pre><code>git merge &lt;branch&gt;
+<pre><code>git add &lt;resolved-file&gt; &amp;&amp; git commit -m 'Manual Merge'
 </code></pre>
 </li>
 <li>
@@ -370,11 +378,13 @@ git mergetool
 </code></pre>
 </li>
 <li>
-<p>Manually solve conflicts and mark file as resolved</p>
+<p>Undo a local merge</p>
 
-<pre><code>git add &lt;resolved-file&gt;
-git commit -m 'Manual Merge'
+<pre><code>git reset --hard &lt;ID&gt;
+git reset --hard &lt;remote&gt;/&lt;branch&gt;
 </code></pre>
+
+<p><em>resetting to remote branch will only work if the remote branch isn't ahead of your local one</em><br><em>to undo a merge that was already pushed you'll have to do a revert</em></p>
 </li>
 </ul><h2>Rebase</h2>
 
@@ -385,7 +395,7 @@ git commit -m 'Manual Merge'
 <pre><code>git rebase &lt;branch&gt;
 </code></pre>
 
-<p><em>!! Don‘t rebase published commits!</em></p>
+<p><em>!! Don‘t rebase published commits</em></p>
 </li>
 <li>
 <p>Abort a rebase</p>
@@ -447,19 +457,19 @@ git reset HEAD -- &lt;single-file&gt;
 </code></pre>
 </li>
 <li>
-<p>Discard all local changes in your working directory</p>
-
-<pre><code>git reset --hard HEAD
-</code></pre>
-</li>
-<li>
 <p>Discard local changes in a specific file</p>
 
 <pre><code>git checkout &lt;file&gt;
 </code></pre>
 </li>
 <li>
-<p>Revert a commit</p>
+<p>Discard all local changes in your working directory</p>
+
+<pre><code>git reset --hard HEAD
+</code></pre>
+</li>
+<li>
+<p>Revert a commit (e.g. to revert a commit already pushed to remote)</p>
 
 <pre><code>git revert HEAD
 git revert &lt;commit&gt;
@@ -524,7 +534,7 @@ Resolve #42
 Ref #4 #8 #15 #16
 </code></pre>
 
-<p><em>shortened, detailed example at <a href="http://is.gd/commit_format">http://is.gd/commit_format</a></em></p>
+<p><em>shortened, detailed example at <a href="http://is.gd/commitformat">http://is.gd/commitformat</a></em></p>
 
 <h2>Best practices</h2>
 
