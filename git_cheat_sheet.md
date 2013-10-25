@@ -161,6 +161,12 @@
 
 		git branch --track <local-branch> <remote>/<remote-branch>
 
+* Show merged branches
+
+		git branch -a --merged
+
+	_`--no-merged` will show branches not merged yet
+
 * Delete a local branch
 
 		git branch -d <branch>
