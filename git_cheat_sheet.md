@@ -165,13 +165,13 @@
 
 		git branch -a --merged
 
-	_`--no-merged` will show branches not merged yet
+	_`--no-merged` will show branches not merged yet_
 
 * Delete a local branch
 
 		git branch -d <branch>
 
-	_`-d` will only delete the branch if it is merged with its upstream branch (if set), `-D` will force the deletion
+	_`-d` will only delete the branch if it is merged with its upstream branch (if set), `-D` will force the deletion_
 
 * Delete a remote branch
 
@@ -278,8 +278,8 @@
 		git reset --hard <ID>
 		git reset --hard <remote>/<branch>
 
-	_resetting to remote branch will only work if the remote branch isn't ahead of your local one
-	_to undo a merge that was already pushed you'll have to do a revert
+	_resetting to remote branch will only work if the remote branch isn't ahead of your local one_
+	_to undo a merge that was already pushed you'll have to do a revert_
 
 ## Rebase
 
