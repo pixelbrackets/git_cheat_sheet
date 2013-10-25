@@ -6,8 +6,7 @@
 
 * Clone an existing repository
 
-		git clone ~/git/some_local_repo.git
-		git clone git@example.com:repo.git
+		git clone ~/git/some_local_repo.git && git clone git@example.com:repo.git
 
 	_default protocoll is ssh_
 
@@ -29,14 +28,14 @@
 
 ## Show local changes
 
-* Current Status - Present branch name and changed files in working directory
+* Show status - current branch name and changed files in working directory
 
 		git status
 		git st
 
-	_requires an alias set for »st«_
+	_`git st` requires an alias set for »st«_
 
-* Changes to tracked files not yet staged
+* Show all changes not yet staged (in tracked files only)
 
 		git diff
 
@@ -48,7 +47,7 @@
 
 		git diff HEAD
 
-* Show only filenames, e.g. to show all file differences between two branches
+* Show only names of changed files, e.g. to show all file differences between two branches
 
 		git diff master --name-only
 		git diff master --name-status
@@ -57,7 +56,7 @@
 
 		git diff <foo> <bar>
 
-	_`+` line does exist in »bar« but not in »foo«, `-` reverse_
+	_»+« line does exist in »bar« but not in »foo«, »-« reverse_
 
 ## Show history
 
@@ -77,7 +76,7 @@
 
 		git blame <file>
 
-	_left side shows the last commit ID for the content on the right side
+	_left side shows the last commit ID for the content on the right side_
 
 * Show a commit identified by its ID
 
