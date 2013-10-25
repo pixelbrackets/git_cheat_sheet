@@ -171,6 +171,8 @@
 
 		git branch -d <branch>
 
+	_`-d` will only delete the branch if it is merged with its upstream branch (if set), `-D` will force the deletion
+
 * Delete a remote branch
 
 		git push <remote> :<remote-branch>
