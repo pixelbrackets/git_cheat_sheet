@@ -5,7 +5,11 @@ html {
 }
 @media print {
 	html {
-		font-size: 10px;
+		font-size: 9px;
+		margin: 0;
+	}
+	body {
+		margin: 10px;
 	}
 }
 
