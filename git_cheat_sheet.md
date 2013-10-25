@@ -13,20 +13,17 @@
 
 * Create a new local repository
 
-		mkdir repo && cd repo
-		git init
+		mkdir repo && cd repo && git init
 
 * Import existing local repository to remote
 
-		git remote add origin ssh://git@example.com/repo.git
-		git push -u origin master
+		git remote add origin ssh://git@example.com/repo.git && git push -u <remote> <branch>
 
 	_`-u` ≙ push for first time and set upstream_
 
 * Create remote repository for existing local data
 
-		mkdir repo.git && cd repo.git
-		git init --bare
+		mkdir repo.git && cd repo.git && git init --bare
 
 	_The remote repository has to be »bare« (does not contain a working filetree, but a special .git subdirectory only) in order to accept a push_
 
