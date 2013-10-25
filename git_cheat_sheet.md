@@ -101,7 +101,11 @@
 
 		git add <file>
 
-* Add some changes in a file to the next commit (partial commit)
+* Commit all local changes in tracked files
+
+		git commit -a
+
+* Add hand-picked changes in a file to the next commit (partial commit)
 
 		git add -p <file>
 
@@ -110,10 +114,6 @@
 	`d` _Don’t add this and all remaining parts_
 	`s` _Split the parts info smaller ones (only works if there’s unchanged lines between the changes in the displayed part)_
 	`e` _Manually edit the parts_
-
-* Commit all local changes in tracked files
-
-		git commit -a
 
 * Commit previously staged changes
 
