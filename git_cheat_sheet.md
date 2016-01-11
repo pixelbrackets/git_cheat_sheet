@@ -396,7 +396,7 @@ _shortened, detailed example at http://is.gd/commitformat_
 * Don't commit half-done work
 	* Commit only complete, logical changes, not half-done chunks. »Stash« changes if applicable.
 * Don't commit hot files
-	* Don't commit configuration files (commit a config template instead), personal data, temporary files (GIT is no backup system) or things that can be regenerated form other commited things.
+	* Don't commit configuration files (commit a config template instead), personal data, temporary files (GIT is no backup system) or things that can be regenerated from other commited things.
 * Write good commit messages
 	* Help others to understand what you did (Motivation for the change? Whats the difference to the previous version?)
 	* Useless commit messages may be forwarded to whatthecommit.com
