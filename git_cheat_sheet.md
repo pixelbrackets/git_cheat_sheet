@@ -401,7 +401,7 @@ _shortened, detailed example at http://is.gd/commitformat_
 	* Help others to understand what you did (Motivation for the change? Whats the difference to the previous version?)
 	* Useless commit messages may be forwarded to whatthecommit.com
 * Write in imperative present tense («change», not «changed» or «changes»)
-	* A commit is a set of instructions for how to go from a previous state to a new state, so you should describe was the commit does and not what it did to your repository.
+	* A commit is a set of instructions for how to go from a previous state to a new state, so you should describe what the commit does and not what it did to your repository.
 * Don't panic
 	* GIT lets you undo, fix or remove a bunch of actions
 * Don't change published history
