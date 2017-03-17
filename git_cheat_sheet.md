@@ -2,6 +2,14 @@
 
 * Legend: `<>` required, `[]` optional
 
+## Common Terminology
+
+* commit ≙ object with annotated changes in relation other commits
+* branch ≙ collection of commits
+* stage ≙ files earmarked for the next commit
+* HEAD ≙ reference to the top commit in the current branch
+* remote = bookmark for a repository origin (a repository may have several remotes)
+
 ## Create & Clone
 
 * Clone an existing repository
