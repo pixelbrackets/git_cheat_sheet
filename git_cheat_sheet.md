@@ -123,9 +123,15 @@
 		git commit
 		git commit -m "<message>"
 
-* Change the last commit
+* Change the last commit 
 
 		git commit --amend -a
+
+	_This will replace the last commit (new ID), so it should only be used if the modified branch was not pushed yet_
+
+* Special: Change author of the last commit
+
+		git commit --amend --author "John Doe <doe@example.com>" 
 
 ## Branches
 
