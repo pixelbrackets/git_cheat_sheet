@@ -76,6 +76,10 @@
 
 	_The reference may be a branch or a tag, note the two dots at the end_
 
+* Show branches in which one commit exists
+
+		git branch --contains <commit ID>
+
 ## Show history
 
 * Show all commits of current branch
