@@ -14,12 +14,6 @@ html {
 }
 
 #wrapper {
-	-moz-column-count: 5;
-	-moz-column-gap: 12px;
-	-moz-column-rule: 1px dashed #ccc;
-	-webkit-column-count: 5;
-	-webkit-column-gap: 12px;
-	-webkit-column-rule: 1px dashed #ccc;
 	column-count: 5;
 	column-gap: 10px;
 	column-rule: 1px dashed #ccc;
@@ -77,7 +71,7 @@ h2:nth-of-type(17) {
 	color: #003333;
 }
 
-p,h2 {
+p, h2 {
 	margin: 0 0 2px 0;
 }
 
@@ -89,10 +83,8 @@ ul ul, ol ol {
 	margin-top: 0;
 }
 
-code,pre {
+code, pre {
 	padding: 0 3px 2px;
-	-webkit-border-radius:3px;
-	-moz-border-radius:3px;
 	border-radius:3px
 }
 code {
@@ -107,8 +99,6 @@ pre {
 	background-color:#f5f5f5;
 	border: 1px solid #ccc;
 	border: 1px solid rgba(0,0,0,0.15);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
 	border-radius: 4px;
 	white-space: pre;
 	white-space: pre-wrap;
