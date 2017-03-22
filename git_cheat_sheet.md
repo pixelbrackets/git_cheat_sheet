@@ -283,11 +283,22 @@ Use tags to save a specific version (the commit relations up to this point) of a
 
 Use rebase with care! It will rewrite the history and therefore requires additional efforts when working with a team! Dont rebase unless every project member knows about the required workflow!
 
+* Rewrite commits from HEAD until given commit
+
+		git rebase -i <commit ID>
+
+	_Opens an editable rebase command list - reorder the commands to change commit order, remove a line to delete the commit, change the preceded keyword to change the command_
+
+	`p|pick` _keep commit_
+	`r|reword` _use commit, but edit the commit message_
+	`e|edit` _use commit, but halt the rebase sequence to change the commit (use `git commit --amend -a`)_
+	`s|squash` _use commit, but meld into previous commit_
+
 * Rebase your current HEAD onto <branch>
 
 		git rebase <branch>
-		
-	_Merges all commits of given branch and applies new commits of the local branch on top (creates new commit IDs)_
+
+	_Merges all commits of given branch and applies new commits of the local branch on top (creates new commit IDs for these)_
 
 * Abort a rebase
 
@@ -452,5 +463,4 @@ _shortened, detailed example at http://is.gd/commitformat_
 
 * Supervisor: Dan Untenzu [@pixelbrackets](https://twitter.com/pixelbrackets)
 * License: [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/de/)
-* Disclaimer: [I Have No Idea What I'm Doing](http://i.minus.com/ibxEw6l6IvBlwd.jpg)
-* Flattr: https://flattr.com/profile/pixelbrackets
+* Download & Contribution: [pixelbrackets.de/git-cheat-sheet](https://pixelbrackets.de/git-cheat-sheet)
