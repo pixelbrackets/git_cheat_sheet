@@ -3,19 +3,10 @@
 html {
 	font-size: 16px;
 }
-@media print {
-	html {
-		font-size: 9px;
-		margin: 0;
-	}
-	body {
-		margin: 10px;
-	}
-}
 
 #wrapper {
 	column-count: 5;
-	column-gap: 10px;
+	column-gap: 16px;
 	column-rule: 1px dashed #ccc;
 }
 
@@ -76,7 +67,7 @@ p, h2 {
 }
 
 ul, ol {
-	padding-left: 1em;
+	padding-left: 1.1em;
 	margin: 0.6em 0;
 }
 ul ul, ol ol {
@@ -85,7 +76,7 @@ ul ul, ol ol {
 
 code, pre {
 	padding: 0 3px 2px;
-	border-radius:3px
+	border-radius: 3px;
 }
 code {
 	padding: 3px 4px;
@@ -103,7 +94,8 @@ pre {
 	white-space: pre;
 	white-space: pre-wrap;
 	word-break: break-all;
-	word-wrap: break-word
+	word-wrap: break-word;
+	break-inside: avoid;
 }
 pre code {
 	padding: 0;
@@ -114,4 +106,43 @@ pre code {
 
 pre, code, kbd, samp {
 	font-size: 90%;
+}
+
+/* Responsive ------------------------- */
+
+@media (max-width: 480px) {
+	#wrapper {
+		column-count: 1;
+	}
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+	#wrapper {
+		column-count: 2;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	#wrapper {
+		column-count: 3;
+	}
+}
+
+/* Print ------------------------- */
+
+@media print {
+	html {
+		font-size: 10px;
+		margin: 0;
+	}
+	body {
+		margin: 10px;
+	}
+	#wrapper {
+		column-count: 5;
+	}
+
+	h2:nth-of-type(15) {
+		break-before: column;
+	}
 }
