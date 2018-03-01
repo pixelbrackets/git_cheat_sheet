@@ -2,7 +2,7 @@ Build
 =====
 
 * Convert Markdown to HTML using https://gist.github.com/pixelbrackets/5046331
-  * `./gfm2html git_cheat_sheet.md screen.css > index.html`
+  * `./gfm2html.sh git_cheat_sheet.md screen.css > index.html`
   * Remove unwanted whitespace: `<code>  ` → `<code>`
   * Remove nofollow directive: ` rel="nofollow"` → ` `
   * Insert OpenGraph metatags
@@ -20,7 +20,7 @@ Build
         <meta name="twitter:image" content="https://pixelbrackets.github.io/git_cheat_sheet/card.png" />
 
 * Convert HTML to PDF using Chromium without page borders
-  * `chromium index.html`
+  * `chromium-browser index.html`
   * Save as git_cheat_sheet.pdf
 * Push to Github
 * Tag new release
