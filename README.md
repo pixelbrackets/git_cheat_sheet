@@ -7,6 +7,7 @@ Build
   * Remove nofollow directive: ` rel="nofollow"` → ` `
   * Insert OpenGraph metatags
 
+        <title>Git Cheat Sheet</title>
         <meta name="description" content="A comprehensive cheat sheet for daily work with Git" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Git Cheat Sheet" />
