@@ -7,7 +7,7 @@ This is a comprehensive cheat sheet for daily work with `Git`.
 ![Cheat Sheet Type](https://img.shields.io/badge/license-cc--by--sa--3.0-blue.svg)
 ![GitHub tag](https://img.shields.io/github/tag/pixelbrackets/git_cheat_sheet.svg)
 
-[![Preview](./card.png)](https://pixelbrackets.github.io/git_cheat_sheet/)
+[![Preview](https://pixelbrackets.github.io/git_cheat_sheet/card.png)](https://pixelbrackets.github.io/git_cheat_sheet/)
 
 Usage
 -----
