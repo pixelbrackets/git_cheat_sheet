@@ -4,6 +4,7 @@ Build
 * Convert Markdown to HTML using https://gist.github.com/pixelbrackets/5046331
   * `./gfm2html git_cheat_sheet.md screen.css > index.html`
   * Remove unwanted whitespace: `<code>  ` → `<code>`
+  * Remove nofollow directive: ` rel="nofollow"` → ` `
   * Insert OpenGraph metatags
 
         <meta name="description" content="A comprehensive cheat sheet for daily work with Git" />
